@@ -1,0 +1,22 @@
+{
+  "phones": [
+    {"id": 0, "vendor": 15314, "img": "https://main-cdn.sbermegamarket.ru/big1/hlr-system/-10/764/532/869/913/25/100039500639b0.jpeg", "name": "IPhone 14 Pro", "description": "This is a new Iphone 14 Pro"},
+    {"id": 1, "vendor": 34112, "img": "https://apple-nova.ru/files/item/1_43.webp", "name": "IPhone 14", "description": "This is a new IPhone 14"},
+  ],
+  "notebooks": [
+    {"id": 2, "vendor": 12341, "img": "https://img.mvideo.ru/Pdb/30053777b.jpg", "name": "Macbook M1", "description": "This is the old Macbook M1"},
+    {"id": 3, "vendor": 42342, "img": "https://store-apple.msk.ru/image/cache/catalog/tovary/macbook/air-m2-2022/apple-macbook-air-m2-midnight-2022-800x800.jpg", "name": "Macbook M2", "description": "This is a new Macbook M2"}
+  ]
+}
+
+{
+  phones: [
+    {id: 0, vendor: 15314, img: 'https://main-cdn.sbermegamarket.ru/big1/hlr-system/-10/764/532/869/913/25/100039500639b0.jpeg', name: 'IPhone 14 Pro', description: 'This is a new Iphone 14 Pro'},
+    {id: 1, vendor: 34112, img: 'https://apple-nova.ru/files/item/1_43.webp', name: 'IPhone 14', description: 'This is a new IPhone 14'},
+  ],
+  notebooks: [
+{id: 2, vendor: 12341, img: 'https://img.mvideo.ru/Pdb/30053777b.jpg', name: 'Macbook M1', description: 'This is the old Macbook M1'},
+{id: 3, vendor: 42342, img: 'https://store-apple.msk.ru/image/cache/catalog/tovary/macbook/air-m2-2022/apple-macbook-air-m2-midnight-2022-800x800.jpg', name: 'Macbook M2', description: 'This is a new Macbook M2'}
+
+]
+}
