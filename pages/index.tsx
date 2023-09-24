@@ -36,9 +36,11 @@ const Index = () => {
                     {
                         isLoading
                             ? <h2>Идет загрузка...</h2>
-                            : items.length && items.map(item => {
-                            return <Item id={item.id} name={item.name} vendor={item.vendor} description={item.description} img={item.img} key={item.id} price={item.price} />
-                        })
+                            : items.length
+                                ? items.map(item => {
+                                    return <Item item={item}/>
+                                })
+                            : <></>
                     }
                 </div>
                 <Mybutton onClick={write}>Upload</Mybutton>

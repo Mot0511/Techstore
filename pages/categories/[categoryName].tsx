@@ -15,14 +15,12 @@ import {fetchItems} from "../../services/fetchItems";
 
 const ItemPage = ({categoryName}: ItemsPropsType) => {
 
-    const [title, setTitle] = useState('Techstore')
     const {items, isLoading, error, category} = useTypedSelector(states => states.items)
+    const [title, setTitle] = useState(category ? category : 'Techstore')
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(fetchItems(categoryName, res => {
-            setTitle(res)
-        }))
+        dispatch(fetchItems(Number(categoryName)))
     }, [categoryName])
 
     return (
@@ -38,7 +36,7 @@ const ItemPage = ({categoryName}: ItemsPropsType) => {
                                 ? <h2>{error}</h2>
                                 : items
                                     ? items.map(item => {
-                                        return <Item id={item.id} name={item.name} vendor={item.vendor} description={item.description} img={item.img} key={item.id} price={item.price} />
+                                        return <Item item={item} />
                                     })
                                 : ''
                     }

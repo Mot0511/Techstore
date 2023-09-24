@@ -27,6 +27,12 @@ export const ItemsSlice = createSlice({
         fetchItemsError(state, action: PayloadAction<string>) {
             state.isLoading = false
             state.error = action.payload
+        },
+        addItem(state, action: PayloadAction<ItemType>){
+            state.items = [...state.items, action.payload]
+        },
+        removeItem(state, action: PayloadAction<number>){
+            state.items = state.items.filter(item => item.id != action.payload)
         }
     },
 })

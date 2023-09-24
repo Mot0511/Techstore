@@ -3,6 +3,5 @@ export default interface ItemType {
     vendor: number,
     name: string,
     description: string,
-    img: string,
     price: string,
 }

@@ -4,7 +4,7 @@ import Mybutton2 from "./mybutton2";
 
 const Multipager = ({pages}: any) => {
 
-    const [content, setContent] = useState()
+    const [content, setContent] = useState(pages[0][1])
 
     return (
         <div className={'container'}>

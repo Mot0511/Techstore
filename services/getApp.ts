@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import {getFirestore} from "firebase/firestore";
-import {getDatabase} from "@firebase/database";
+import {getDatabase, ref} from "@firebase/database";
+import {doc} from "@firebase/firestore";
+import {getStorage} from "@firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyC_zmqr839OpJXOQ3Mm4ZPN6wxvnhGHK4Y",
@@ -15,5 +17,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-
-export {app, db}
+const store = getFirestore(app);
+const storage = getStorage(app);
+const getRef = (path: string = '') => ref(db, path)
+const itemsRef = (name: string) => doc(store, 'items', name)
+export {app, db, getRef, store, itemsRef, storage}
