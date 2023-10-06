@@ -21,9 +21,9 @@ const Myitems = () => {
     const {addItem: uploadItem, removeItem} = ItemsSlice.actions
     const dispatch = useAppDispatch()
 
-    const [name, setName] = useState('IPhone 11')
-    const [description, setDescription] = useState('This is a new IPhone 11')
-    const [price, setPrice] = useState('100000')
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [price, setPrice] = useState('')
     const [img, setImg] = useState('')
     const [category, setCategory] = useState(0)
     const [list, setList] = useState<string[]>([])

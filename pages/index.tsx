@@ -20,9 +20,6 @@ const Index = () => {
     useEffect(() => {
         dispatch(fetchItems())
     }, [])
-    const write = () => {
-        set(ref(db, 'list/'), ['phones', 'notebooks'])
-    }
 
     return (
         <MainContainer title={'Главная'}>
@@ -42,8 +39,8 @@ const Index = () => {
                                 })
                             : <></>
                     }
+
                 </div>
-                <Mybutton onClick={write}>Upload</Mybutton>
             </div>
         </MainContainer>
     );

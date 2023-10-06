@@ -1,6 +1,7 @@
 import {getAuth, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
-import {app, db} from "./getApp";
+import {app, db, store} from "./getApp";
 import {get, ref, set} from "@firebase/database";
+import {doc, setDoc} from "@firebase/firestore";
 
 export const signWithGoogle = async (callback: (access: boolean, username: string) => undefined) => {
     const provider = new GoogleAuthProvider();
@@ -17,6 +18,9 @@ export const signWithGoogle = async (callback: (access: boolean, username: strin
                         username: email,
                         email: res.user.email,
                         level: 0,
+                    })
+                    await setDoc(doc(store, 'carts', email), {
+                        items: []
                     })
                 }
                 callback(true, email)

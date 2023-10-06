@@ -8,11 +8,19 @@ import {fetchList} from "../services/fetchList";
 import {deleteObject, getDownloadURL, ref as storageRef} from "@firebase/storage";
 import {deleteDoc, doc} from "@firebase/firestore";
 import {useAppDispatch} from "../hooks/useTypedDispatch";
+import {addCartItem} from "../services/CartService";
+import {useTypedSelector} from "../hooks/useTypedSelector";
+import {useCookies} from "react-cookie";
 
 const Item = ({item, type='main', update}: any) => {
     const [cover, setCover] = useState('')
     const dispatch = useAppDispatch()
-
+    const isInCart = useTypedSelector(states => {
+        if (states.cart.items.filter(el => el.id == item.id).length) {
+            return true
+        }
+    })
+    const [cookies] = useCookies()
     const removeItem = async (id: string) => {
         await deleteDoc(itemsRef(String(id)));
         deleteObject(storageRef(storage, item.id+'.png')).then(() => {
@@ -25,15 +33,19 @@ const Item = ({item, type='main', update}: any) => {
         })
     }, [])
     return (
-        <div className={cl.item + ' col-lg-4'}>
+        <div className={cl.item + ' col-lg-4 block'} key={item.id}>
             <div className={cl.cover} id={'img'} style={{backgroundImage: `url(${cover})`}}></div>
             <h4>{item.name}</h4>
-            <p>{item.price}</p>
+            <p>{item.price} руб.</p>
+            <p>{item.count && item.count + ' шт.'}</p>
             {
                 type == 'main'
-                    ? <Mybutton fullwidth={true}>В корзину</Mybutton>
-                    : type == 'admin' && <Mybutton fullwidth={true} onClick={() => removeItem(item.id)}>Удалить</Mybutton>
-
+                    ? isInCart
+                        ? <p>В корзине</p>
+                        : <Mybutton onClick={() => addCartItem(item, dispatch, cookies.login)} fullwidth={true}>В корзину</Mybutton>
+                    : type == 'none'
+                        ? <></>
+                        : type == 'admin' && <Mybutton fullwidth={true} onClick={() => removeItem(item.id)}>Удалить</Mybutton>
             }
         </div>
     );

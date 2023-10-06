@@ -13,3 +13,10 @@ a{
     cursor: pointer;
     text-decoration: black;
 }
+.block{
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 28px;
+    margin-top: 10px
+}
