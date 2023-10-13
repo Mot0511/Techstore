@@ -11,6 +11,7 @@ import {useAppDispatch} from "../hooks/useTypedDispatch";
 import {addCartItem} from "../services/CartService";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {useCookies} from "react-cookie";
+import Link from "next/link";
 
 const Item = ({item, type='main', update}: any) => {
     const [cover, setCover] = useState('')
@@ -34,7 +35,7 @@ const Item = ({item, type='main', update}: any) => {
     }, [])
     return (
         <div className={cl.item + ' col-lg-4 block'} key={item.id}>
-            <div className={cl.cover} id={'img'} style={{backgroundImage: `url(${cover})`}}></div>
+            <Link href={`/product/${item.id}`}><div className={cl.cover} id={'img'} style={{backgroundImage: `url(${cover})`}}></div></Link>
             <h4>{item.name}</h4>
             <p>{item.price} руб.</p>
             <p>{item.count && item.count + ' шт.'}</p>

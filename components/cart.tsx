@@ -5,9 +5,6 @@ import Mybutton from "./UI/mybutton";
 import Myinput from "./UI/myinput";
 import Myselect from "./UI/myselect";
 import {useTypedSelector} from "../hooks/useTypedSelector";
-import axios from "axios";
-// @ts-ignore
-import QiwiPullAPI from '@qiwi/pull-rest-api-node-js-sdk'
 import {useRouter} from "next/router";
 import {useAppDispatch} from "../hooks/useTypedDispatch";
 import {OrdersSlice} from "../store/reducers/OrdersSlice";
@@ -34,7 +31,7 @@ const Cart = ({user}: {user: string}) => {
 
     const order =  () => {
         const orderId = Math.floor(Math.random() * 9999)
-        const order: OrderType = {items: items, orderId: orderId, status: 0, name: name, point: points[point]}
+        const order: OrderType = {items: items, orderId: orderId, status: 0, name: name, point: points[point], user: cookies.login}
         dispatch(addOrder(order))
         set(getRef(`/orders/${cookies.login}/${orderId}`), order)
         router.push(`/order/${orderId}`)

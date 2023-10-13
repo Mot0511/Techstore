@@ -6,4 +6,5 @@ export default interface OrderType {
     status: number
     name: string
     point: string
+    user: string
 }

@@ -65,14 +65,18 @@ const MainContainer = ({title, children}: MainContainerProps) => {
         get(getRef('list/')).then(res => {
             setList(res.val())
         })
-        getCart()
-        getOrders()
+        if (cookie.login){
+            getCart()
+            getOrders()
+        }
+
     }, [])
 
     const logout = () => {
         signOut(getAuth(app)).then(() => {
-            router.push('/')
             removeCookie('login')
+            window.location.reload()
+            router.push('/')
         })
     }
 
@@ -100,7 +104,7 @@ const MainContainer = ({title, children}: MainContainerProps) => {
                                 <div className="col-lg-4">
                                     <div className="row">
                                         <div className="col-lg">
-                                            <div style={{display: 'flex', justifyContent: 'end'}}>
+                                            <div className={cl.headerBtns}>
 
                                                 {
                                                     login
@@ -121,7 +125,7 @@ const MainContainer = ({title, children}: MainContainerProps) => {
                                 </div>
                             </div>
                         </div>
-                        <hr/>
+                        <hr className={cl.hr}/>
                     </div>
                     <div className={cl.content}>
                         {children}

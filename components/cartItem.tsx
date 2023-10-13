@@ -26,14 +26,15 @@ const CartItem = ({item, count}: any) => {
                     dispatch(setCount([item.id, e.target.value]))
                 }} className={'form-control'} style={{width: '100px'}} />
                 <p>шт.</p>
-                <Mybutton onClick={() => {
-                    const tmp = items.filter(el => el.id != item.id)
-                    updateDoc(doc(store, 'carts', cookies.login), {
-                        items: tmp
-                    })
-                    dispatch(removeItem(item.id))
-                }}>Удалить</Mybutton>
+
             </div>
+            <Mybutton classes={cl.delBtn} onClick={() => {
+                const tmp = items.filter(el => el.id != item.id)
+                updateDoc(doc(store, 'carts', cookies.login), {
+                    items: tmp
+                })
+                dispatch(removeItem(item.id))
+            }}>Удалить</Mybutton>
         </div>
     );
 };

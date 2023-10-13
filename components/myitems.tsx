@@ -54,7 +54,7 @@ const Myitems = () => {
                     vendor: id,
                     name: name,
                     description: description,
-                    price: price,
+                    price: Number(price),
                     category: Number(category),
                 }
                 await setDoc(itemsRef(String(id)), item);
