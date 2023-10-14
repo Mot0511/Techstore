@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Head from "next/head";
+import image from "next/image";
 import cl from '../styles/MainContainer.module.sass'
 import Link from "next/link";
 import Mybutton from "./UI/mybutton";
@@ -60,7 +61,7 @@ const MainContainer = ({title, children}: MainContainerProps) => {
         })
     }
 
-    useEffect(() => {
+    const onStart = () => {
         setDomLoaded(true);
         get(getRef('list/')).then(res => {
             setList(res.val())
@@ -69,7 +70,10 @@ const MainContainer = ({title, children}: MainContainerProps) => {
             getCart()
             getOrders()
         }
+    }
 
+    useEffect(() => {
+        onStart()
     }, [])
 
     const logout = () => {
@@ -80,6 +84,7 @@ const MainContainer = ({title, children}: MainContainerProps) => {
         })
     }
 
+    // @ts-ignore
     return (
         <>
             {
@@ -97,7 +102,7 @@ const MainContainer = ({title, children}: MainContainerProps) => {
                                     <div className={cl.menu}>
                                         <Link href={'/'}>Главная</Link>
                                         {
-                                            list.map(el => <Link href={`/categories/${list.indexOf(el)}`}>{el}</Link>)
+                                            list.map(el => <Link href={`/categories/${list.indexOf(el)}`} key={Date.now()}>{el}</Link>)
                                         }
                                     </div>
                                 </div>

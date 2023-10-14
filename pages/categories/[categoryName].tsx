@@ -19,8 +19,12 @@ const ItemPage = ({categoryName}: ItemsPropsType) => {
     const [title, setTitle] = useState(category ? category : 'Techstore')
     const dispatch = useAppDispatch()
 
-    useEffect(() => {
+    const getItems = async () => {
         dispatch(fetchItems(Number(categoryName)))
+    }
+
+    useEffect(() => {
+        getItems()
     }, [categoryName])
 
     return (

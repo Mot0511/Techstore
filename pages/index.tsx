@@ -17,8 +17,11 @@ import axios from "axios";
 const Index = () => {
     const {items, isLoading, error} = useTypedSelector(states => states.items)
     const dispatch = useAppDispatch()
-    useEffect(() => {
+    const getItems = async () => {
         dispatch(fetchItems())
+    }
+    useEffect(() => {
+        getItems()
     }, [])
 
     return (

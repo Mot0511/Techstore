@@ -23,8 +23,11 @@ const Id = ({id}: {id: number}) => {
     })
     const [cover, setCover] = useState('')
     const [cookies] = useCookies()
-    useEffect(() => {
+    const getItems = async () => {
         dispatch(fetchItems())
+    }
+    useEffect(() => {
+        getItems()
     }, [])
     useEffect(() => {
         if (!isLoading){

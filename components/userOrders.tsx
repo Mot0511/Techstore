@@ -14,7 +14,8 @@ const UserOrders = () => {
     const dispatch = useAppDispatch()
     const {addOrders} = OrdersSlice.actions
     const [cookies] = useCookies()
-    useEffect(() => {
+
+    const onStart = async () => {
         onValue(getRef(`/orders/${cookies.login}/`), snap => {
             const data = snap.val()
             const array: OrderType[] = []
@@ -23,6 +24,10 @@ const UserOrders = () => {
             }
             dispatch(addOrders(array))
         })
+    }
+
+    useEffect(() => {
+        onStart()
     }, []);
 
     return (

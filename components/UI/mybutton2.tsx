@@ -2,7 +2,7 @@ import React from 'react';
 import cl from "../../styles/UI/mybutton2.module.sass";
 
 const Mybutton2 = (props: any) => {
-    const styles = {}
+    const styles: {width: string, backgroundColor: string} = {width: 'auto', backgroundColor: 'none'}
     if (props.fullwidth){
         styles['width'] = '100%'
     }
@@ -10,7 +10,7 @@ const Mybutton2 = (props: any) => {
         styles['backgroundColor'] = 'lightgrey'
     }
     return (
-        <button style={styles} className={cl.button} {...props}>{props.children}</button>
+        <button key={Date.now()} style={styles} className={cl.button} {...props}>{props.children}</button>
     );
 };
 

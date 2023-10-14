@@ -28,7 +28,7 @@ const Order = ({order, isAdmin}: {order: OrderType, isAdmin: boolean}) => {
         set(getRef(`/orders/${order.user}/${order.orderId}/status`), statusNum)
     }
     return (
-        <div>
+        <div key={Date.now()}>
             <div className={cl.orderHeader} style={{marginBottom: '50px'}}>
                 <h1>Заказ: {order.orderId}</h1>
                 <p>{order.point}</p>
