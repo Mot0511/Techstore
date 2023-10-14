@@ -3,7 +3,7 @@ import {UserActionType} from "../types/UserActionType";
 import {UserSlice} from "../store/reducers/UserSlice";
 import {db} from "./getApp";
 import {get, ref} from "@firebase/database";
-import {UserType} from "../types/UserType";
+import UserType from "../types/UserType";
 
 export const fetchUser = (username: string) => {
     const {fetchUser, fetchUserSuccess, fetchUserError} = UserSlice.actions

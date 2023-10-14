@@ -17,11 +17,9 @@ import axios from "axios";
 const Index = () => {
     const {items, isLoading, error} = useTypedSelector(states => states.items)
     const dispatch = useAppDispatch()
-    const getItems = async () => {
-        dispatch(fetchItems())
-    }
+
     useEffect(() => {
-        getItems()
+        dispatch(fetchItems())
     }, [])
 
     return (
@@ -38,7 +36,7 @@ const Index = () => {
                             ? <h2>Идет загрузка...</h2>
                             : items.length
                                 ? items.map(item => {
-                                    return <Item item={item}/>
+                                    return <Item item={item} key={Date.now()}/>
                                 })
                             : <></>
                     }

@@ -28,16 +28,14 @@ const Item = ({item, type='main', update}: any) => {
             update()
         })
     }
-    const getCover = async () => {
+
+    useEffect(() => {
         getDownloadURL(storageRef(storage, item.id+'.png')).then(async (url) => {
             setCover(url)
         })
-    }
-    useEffect(() => {
-        getCover()
     }, [])
     return (
-        <div className={cl.item + ' col-lg-4 block'} key={Date.now()}>
+        <div className={cl.item + ' col-lg-4 block'}>
             <Link href={`/product/${item.id}`}><div className={cl.cover} id={'img'} style={{backgroundImage: `url(${cover})`}}></div></Link>
             <h4>{item.name}</h4>
             <p>{item.price} руб.</p>

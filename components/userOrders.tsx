@@ -15,7 +15,8 @@ const UserOrders = () => {
     const {addOrders} = OrdersSlice.actions
     const [cookies] = useCookies()
 
-    const onStart = async () => {
+
+    useEffect(() => {
         onValue(getRef(`/orders/${cookies.login}/`), snap => {
             const data = snap.val()
             const array: OrderType[] = []
@@ -24,16 +25,12 @@ const UserOrders = () => {
             }
             dispatch(addOrders(array))
         })
-    }
-
-    useEffect(() => {
-        onStart()
     }, []);
 
     return (
         <div className={cl.orders}>
             {
-                orders.map(order => <Order order={order} isAdmin={false}/>)
+                orders.map(order => <Order order={order} key={Date.now()} isAdmin={false}/>)
             }
         </div>
     );

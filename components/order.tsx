@@ -28,7 +28,7 @@ const Order = ({order, isAdmin}: {order: OrderType, isAdmin: boolean}) => {
         set(getRef(`/orders/${order.user}/${order.orderId}/status`), statusNum)
     }
     return (
-        <div key={Date.now()}>
+        <div>
             <div className={cl.orderHeader} style={{marginBottom: '50px'}}>
                 <h1>Заказ: {order.orderId}</h1>
                 <p>{order.point}</p>
@@ -37,7 +37,7 @@ const Order = ({order, isAdmin}: {order: OrderType, isAdmin: boolean}) => {
                 <div className="container">
                     <div className="row">
                         {
-                            order.items.map(item => <Item item={item} type={'none'} />)
+                            order.items.map(item => <Item item={item} type={'none'} key={Date.now()} />)
                         }
                     </div>
                 </div>

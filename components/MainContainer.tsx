@@ -17,6 +17,7 @@ import {useAppDispatch} from "../hooks/useTypedDispatch";
 import {CartSlice} from "../store/reducers/CartSlice";
 import {OrdersSlice} from "../store/reducers/OrdersSlice";
 import OrderType from "../types/OrderType";
+import Script from 'next/script';
 interface MainContainerProps {
     title: string,
     children: React.ReactNode
@@ -61,7 +62,7 @@ const MainContainer = ({title, children}: MainContainerProps) => {
         })
     }
 
-    const onStart = () => {
+    useEffect(() => {
         setDomLoaded(true);
         get(getRef('list/')).then(res => {
             setList(res.val())
@@ -70,10 +71,6 @@ const MainContainer = ({title, children}: MainContainerProps) => {
             getCart()
             getOrders()
         }
-    }
-
-    useEffect(() => {
-        onStart()
     }, [])
 
     const logout = () => {
@@ -89,10 +86,10 @@ const MainContainer = ({title, children}: MainContainerProps) => {
         <>
             {
                 domLoaded && <div className={'container'}>
+                    <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossOrigin="anonymous"></Script>
                     <Head>
                         <title>{title}</title>
                         <script src="https://apis.google.com/js/platform.js" async defer></script>
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossOrigin="anonymous"></script>
                     </Head>
                     <div className={cl.header}>
                         <div className="container">

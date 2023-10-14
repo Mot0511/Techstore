@@ -45,7 +45,7 @@ const Cart = ({user}: {user: string}) => {
             <div className={cl.list}>
                 {
                     items.length
-                        ? items.map(item => <CartItem item={item} count={item.count}  />)
+                        ? items.map(item => <CartItem item={item} count={item.count} key={Date.now()} />)
                         : <h4>Корзина пуста</h4>
                 }
             </div>

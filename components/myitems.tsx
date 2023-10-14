@@ -114,7 +114,7 @@ const Myitems = () => {
                             : error
                                 ? <h3>Произошла ошибка</h3>
                                 : items.map(item => {
-                                    return <Item item={item} type={'admin'} update={updatePage}/>
+                                    return <Item item={item} type={'admin'} key={Date.now()} update={updatePage}/>
                                 })
                     }
                 </div>

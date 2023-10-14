@@ -19,12 +19,8 @@ const ItemPage = ({categoryName}: ItemsPropsType) => {
     const [title, setTitle] = useState(category ? category : 'Techstore')
     const dispatch = useAppDispatch()
 
-    const getItems = async () => {
-        dispatch(fetchItems(Number(categoryName)))
-    }
-
     useEffect(() => {
-        getItems()
+        dispatch(fetchItems(Number(categoryName)))
     }, [categoryName])
 
     return (
@@ -40,7 +36,7 @@ const ItemPage = ({categoryName}: ItemsPropsType) => {
                                 ? <h2>{error}</h2>
                                 : items
                                     ? items.map(item => {
-                                        return <Item item={item} />
+                                        return <Item item={item} key={Date.now()}/>
                                     })
                                 : ''
                     }
