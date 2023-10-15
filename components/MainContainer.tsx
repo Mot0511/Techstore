@@ -99,7 +99,7 @@ const MainContainer = ({title, children}: MainContainerProps) => {
                                     <div className={cl.menu}>
                                         <Link href={'/'}>Главная</Link>
                                         {
-                                            list.map(el => <Link href={`/categories/${list.indexOf(el)}`} key={Date.now()}>{el}</Link>)
+                                            list.map(el => <Link href={`/categories/${list.indexOf(el)}`} key={list.indexOf(el)}>{el}</Link>)
                                         }
                                     </div>
                                 </div>
