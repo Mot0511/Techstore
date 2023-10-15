@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import Head from "next/head";
-import image from "next/image";
 import cl from '../styles/MainContainer.module.sass'
 import Link from "next/link";
 import Mybutton from "./UI/mybutton";
@@ -97,9 +96,9 @@ const MainContainer = ({title, children}: MainContainerProps) => {
                                 <div className="col-lg-2"><h2>TechStore</h2></div>
                                 <div className="col-lg-6">
                                     <div className={cl.menu}>
-                                        <Link href={'/'}>Главная</Link>
+                                        <Link className={cl.menuItem} href={'/'}>Главная</Link>
                                         {
-                                            list.map(el => <Link href={`/categories/${list.indexOf(el)}`} key={list.indexOf(el)}>{el}</Link>)
+                                            list.map(el => <Link className={cl.menuItem} href={`/categories/${list.indexOf(el)}`} key={list.indexOf(el)}>{el}</Link>)
                                         }
                                     </div>
                                 </div>
