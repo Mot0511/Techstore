@@ -13,7 +13,7 @@ const User = ({username}: any) => {
 
     const dispatch = useAppDispatch()
     const {user, isLoading, error} = useTypedSelector(states => states.user)
-    const multiPager = user.level == 0 ? <Multipager pages={[['Заказы', <Orders key={Date.now()} />], ['Товары', <Myitems key={Date.now()} />]]}/> : user.level == 1 ? <Multipager pages={[['Заказы', <Orders key={Date.now()} />]]}/> : <Multipager pages={[['Мои заказы', <UserOrders key={Date.now()} />], ['Корзина', <Cart user={username} key={Date.now()} />]]}/>
+    const multiPager = user.level == 0 ? <Multipager pages={[['Заказы', <Orders key={0} />], ['Товары', <Myitems key={1} />]]}/> : user.level == 1 ? <Multipager pages={[['Заказы', <Orders key={0} />]]}/> : <Multipager pages={[['Мои заказы', <UserOrders key={0} />], ['Корзина', <Cart user={username} key={1} />]]}/>
 
     useEffect(() => {
         dispatch(fetchUser(username))

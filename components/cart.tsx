@@ -19,7 +19,7 @@ const Cart = ({user}: {user: string}) => {
     const dispatch = useAppDispatch()
     const {addOrder} = OrdersSlice.actions
     const [cookies] = useCookies()
-    const [name, setName] = useState('Матвей')
+    const [name, setName] = useState('')
     const [point, setPoint] = useState(0)
     const [points, setPoints] = useState([])
     // const [payway, setPayway] = useState(0)
@@ -30,11 +30,14 @@ const Cart = ({user}: {user: string}) => {
     })
 
     const order =  () => {
-        const orderId = Math.floor(Math.random() * 9999)
-        const order: OrderType = {items: items, orderId: orderId, status: 0, name: name, point: points[point], user: cookies.login}
-        dispatch(addOrder(order))
-        set(getRef(`/orders/${cookies.login}/${orderId}`), order)
-        router.push(`/order/${orderId}`)
+        if (name){
+            const orderId = Math.floor(Math.random() * 9999)
+            const order: OrderType = {items: items, orderId: orderId, status: 0, name: name, point: points[point], user: cookies.login}
+            dispatch(addOrder(order))
+            set(getRef(`/orders/${cookies.login}/${orderId}`), order)
+            router.push(`/order/${orderId}`)
+        }
+
     }
     useEffect(() => {
         get(getRef('/points')).then(snap => setPoints(snap.val()))
@@ -45,7 +48,7 @@ const Cart = ({user}: {user: string}) => {
             <div className={cl.list}>
                 {
                     items.length
-                        ? items.map(item => <CartItem item={item} count={item.count} key={Date.now()} />)
+                        ? items.map(item => <CartItem item={item} count={item.count} key={item.id} />)
                         : <h4>Корзина пуста</h4>
                 }
             </div>

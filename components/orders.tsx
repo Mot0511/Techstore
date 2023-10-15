@@ -28,7 +28,7 @@ const Orders = () => {
     return (
         <div className={cl.orders}>
             {
-                orders.map(order => <Order order={order} key={Date.now()} isAdmin={true} />)
+                orders.map(order => <Order order={order} key={order.orderId} isAdmin={true} />)
             }
         </div>
     );

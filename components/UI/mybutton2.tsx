@@ -10,7 +10,7 @@ const Mybutton2 = (props: any) => {
         styles['backgroundColor'] = 'lightgrey'
     }
     return (
-        <button key={Date.now()} style={styles} className={cl.button} {...props}>{props.children}</button>
+        <button style={styles} className={cl.button} {...props}>{props.children}</button>
     );
 };
 

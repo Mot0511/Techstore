@@ -6,7 +6,7 @@ const Myselect = (props: any) => {
             <span className="input-group-text">{props.text}</span>
             <select {...props} onChange={e => props.callback(e.target.value)} className="form-select">
                 {
-                    props.options.map((option: string[]) => <option key={Date.now()} value={props.options.indexOf(option)}>{option}</option>)
+                    props.options.map((option: string[]) => <option key={props.options.indexOf(option)} value={props.options.indexOf(option)}>{option}</option>)
                 }
             </select>
         </div>

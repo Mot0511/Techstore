@@ -36,7 +36,7 @@ const Index = () => {
                             ? <h2>Идет загрузка...</h2>
                             : items.length
                                 ? items.map(item => {
-                                    return <Item item={item} key={Date.now()}/>
+                                    return <Item item={item} key={item.id}/>
                                 })
                             : <></>
                     }

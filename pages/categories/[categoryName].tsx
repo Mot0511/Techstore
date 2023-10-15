@@ -36,7 +36,7 @@ const ItemPage = ({categoryName}: ItemsPropsType) => {
                                 ? <h2>{error}</h2>
                                 : items
                                     ? items.map(item => {
-                                        return <Item item={item} key={Date.now()}/>
+                                        return <Item item={item} key={item.id}/>
                                     })
                                 : ''
                     }

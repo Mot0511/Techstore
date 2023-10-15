@@ -16,7 +16,7 @@ const CartItem = ({item, count}: any) => {
     const [cookies] = useCookies()
 
     return (
-        <div key={Date.now()} className={cl.item + ' block'}>
+        <div className={cl.item + ' block'}>
             <div className={cl.itemHeading}>
                 <h4>{item.name}</h4>
             </div>

@@ -37,7 +37,7 @@ const Order = ({order, isAdmin}: {order: OrderType, isAdmin: boolean}) => {
                 <div className="container">
                     <div className="row">
                         {
-                            order.items.map(item => <Item item={item} type={'none'} key={Date.now()} />)
+                            order.items.map(item => <Item item={item} type={'none'} key={item.id} />)
                         }
                     </div>
                 </div>

@@ -12,7 +12,7 @@ const Multipager = ({pages}: any) => {
                 <div className={cl.menu + ' col-lg-3'}>
                     {
                         pages.map((page: any) => {
-                            return <Mybutton2 key={Date.now()} onClick={() => setContent(page[1])} fullwidth={true}>{page[0]}</Mybutton2>
+                            return <Mybutton2 key={pages.indexOf(page)} onClick={() => setContent(page[1])} fullwidth={true}>{page[0]}</Mybutton2>
                         })
                     }
 
